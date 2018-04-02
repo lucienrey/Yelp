@@ -11905,8 +11905,9 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Predicting-Business-Ratings-with-Yelp-Dataset">Predicting Business Ratings with Yelp Dataset<a class="anchor-link" href="#Predicting-Business-Ratings-with-Yelp-Dataset">&#182;</a></h1><p><img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Yelp_Logo.svg" style="float: left; margin: 20px; height: 106px"></p>
-<h3 id="General-Assembly---Data-Science-Course---March-2018">General Assembly - Data Science Course - March 2018<a class="anchor-link" href="#General-Assembly---Data-Science-Course---March-2018">&#182;</a></h3><h4 id="Lucien-Rey">Lucien Rey<a class="anchor-link" href="#Lucien-Rey">&#182;</a></h4>
+<p><br></p>
+<h1 id="Predicting-Business-Ratings-with-Yelp-Dataset">Predicting Business Ratings with Yelp Dataset<a class="anchor-link" href="#Predicting-Business-Ratings-with-Yelp-Dataset">&#182;</a></h1><h3 id="General-Assembly---Data-Science-Course---March-2018">General Assembly - Data Science Course - March 2018<a class="anchor-link" href="#General-Assembly---Data-Science-Course---March-2018">&#182;</a></h3><h4 id="Lucien-Rey">Lucien Rey<a class="anchor-link" href="#Lucien-Rey">&#182;</a></h4><p><img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Yelp_Logo.svg" style="float: left; height: 106px"></p>
+
 </div>
 </div>
 </div></section></section><section><section>
@@ -11914,7 +11915,8 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Table-of-Content">Table of Content<a class="anchor-link" href="#Table-of-Content">&#182;</a></h1><ol>
+<h1 id="Table-of-Content">Table of Content<a class="anchor-link" href="#Table-of-Content">&#182;</a></h1><hr>
+<ol>
 <li>Project Idea</li>
 <li>Dataset</li>
 <li>EDA</li>
@@ -11929,7 +11931,8 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="1.-Project-Idea">1. Project Idea<a class="anchor-link" href="#1.-Project-Idea">&#182;</a></h1><ul>
+<h1 id="1.-Project-Idea">1. Project Idea<a class="anchor-link" href="#1.-Project-Idea">&#182;</a></h1><hr>
+<ul>
 <li>Predicting ratings for businesses listed on Yelp</li>
 <li>Ratings between a range of 1-3 and 4-5 for "BAD", and "GOOD", respectively.</li>
 </ul>
@@ -11955,7 +11958,8 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="2.1-The-Dataset">2.1 The Dataset<a class="anchor-link" href="#2.1-The-Dataset">&#182;</a></h1><ul>
+<h1 id="2.1-The-Dataset">2.1 The Dataset<a class="anchor-link" href="#2.1-The-Dataset">&#182;</a></h1><hr>
+<ul>
 <li>All available on their website and on kaggle<ul>
 <li><a href="https://www.yelp.com/dataset">https://www.yelp.com/dataset</a></li>
 <li><a href="https://www.kaggle.com/yelp-dataset/yelp-dataset">https://www.kaggle.com/yelp-dataset/yelp-dataset</a></li>
@@ -11963,14 +11967,15 @@ a.anchor-link {
 </li>
 <li>Large dataset available in JSON, SQL, CSV format</li>
 <li>Used 5 different .csv files:<ul>
+<li>yelp_business.csv: id, name, postcode, latitude, review count and categories.</li>
 <li>yelp_business_attributes.csv: attributes from each business (Dogs allowed, Wifi available, etc..)</li>
-<li>yelp_tips: all the tips, which are like reviews / short tip from customers.</li>
+<li>yelp_tip: all the tips, which are like reviews / short tip from customers.</li>
 <li>yelp_business_hours: which contains the opening hours of each business.</li>
 <li>yelp_reviews: contains all 5 millions reviews for each user</li>
 </ul>
 </li>
 </ul>
-<p><img src="yelp_reviews.png" style="float: middle; height: 106px"></p>
+<p><img src="yelp_reviews.png" style="align:bottom;left:30;height:106px"></p>
 
 </div>
 </div>
@@ -11979,25 +11984,21 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="2.2-Data-Cleanup">2.2 Data Cleanup<a class="anchor-link" href="#2.2-Data-Cleanup">&#182;</a></h1><ul>
-<li>Select only business that is open</li>
-<li>Added the attributes (92 columns) and reduce to NA threshold of 5000</li>
-<li>Group the different categories (54600) with threshold 1000 and added back to the dataset</li>
-<li>Added number of tips for each business</li>
-<li>Added dummy if the business is open on weekend or not</li>
-<li>Transform the target to Good/Bad</li>
-</ul>
-<p>Dataset Shape = (146702, 165)</p>
+<h1 id="Data-Shape">Data Shape<a class="anchor-link" href="#Data-Shape">&#182;</a></h1><hr>
 
 </div>
 </div>
-</div></section></section>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">yelp_business</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">yelp_business_attributes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">yelp_tip</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">yelp_business_hours</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">yelp_review</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12013,21 +12014,203 @@ a.anchor-link {
 <div class="prompt"></div>
 
 
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
-width=422
-height=248
->
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(174567, 13)
+(152041, 82)
+(1098324, 5)
+(174567, 8)
+(5261668, 9)
+</pre>
 </div>
-
 </div>
 
 </div>
 </div>
 
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="2.2-Data-Cleanup">2.2 Data Cleanup<a class="anchor-link" href="#2.2-Data-Cleanup">&#182;</a></h1><hr>
+<ul>
+<li>Select only business that is open</li>
+<li>Added the attributes (92 columns) and reduce to NA threshold of 5000</li>
+<li>Group the different categories (54600) with threshold 1000 and added back to the dataset</li>
+<li>Added number of tips for each business</li>
+<li>Added dummy if the business is open on weekend or not</li>
+<li>Transform the target to Good/Bad</li>
+</ul>
+<p>Dataset Shape = (146702, 165)</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="3.-EDA">3. EDA<a class="anchor-link" href="#3.-EDA">&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="3.1-EDA---Stars-Ratings">3.1 EDA - Stars Ratings<a class="anchor-link" href="#3.1-EDA---Stars-Ratings">&#182;</a></h1><hr>
+<p><img src="stars.png" style="align:bottom;left:30;height:400px"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="3.2-EDA---Review-and-Stars-Ratings">3.2 EDA - Review and Stars Ratings<a class="anchor-link" href="#3.2-EDA---Review-and-Stars-Ratings">&#182;</a></h1><hr>
+<p><img src="distri.png" style="align:bottom;height=100px;width=100px"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="3.3-EDA---Review-and-Stars-Ratings">3.3 EDA - Review and Stars Ratings<a class="anchor-link" href="#3.3-EDA---Review-and-Stars-Ratings">&#182;</a></h1><hr>
+<p><img src="categories.png" style="align:bottom;left:30;height:400px"></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="4.-Initial-Models">4. Initial Models<a class="anchor-link" href="#4.-Initial-Models">&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="4.2-Initial-Models">4.2 Initial Models<a class="anchor-link" href="#4.2-Initial-Models">&#182;</a></h1><hr>
+<p><img src="model1.png" style="align:bottom;left:30;height:400px"></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="5.-NLP">5. NLP<a class="anchor-link" href="#5.-NLP">&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="5.1-NLP">5.1 NLP<a class="anchor-link" href="#5.1-NLP">&#182;</a></h1><hr>
+<ul>
+<li>Analysis on the reviews (5m reviews) and tips (1m tips)</li>
+<li>Used nltk package with the SentimentIntensityAnalyzer and Vader<ul>
+<li>This will analyse each text and provides a sentiment between 0 to 1 for Negative, Positive, Neutral impression. </li>
+<li>The Compound is simply an average of all three sentiments.</li>
+</ul>
+</li>
+<li>Review file also provides with the number of useful /funny/ cool votes received for each comments. Added theses variables to the main dataset.</li>
+</ul>
+<p>Dataset Shape = (146702, 176)</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="5.2-Examples">5.2 Examples<a class="anchor-link" href="#5.2-Examples">&#182;</a></h1><hr>
+<p>“VADER is VERY SMART, handsome, and FUNNY.”
+{'neg': 0.0, 'neu': 0.246, 'pos': <strong>0.754</strong>, 'compound': 0.9227}</p>
+<p>“VADER is not smart, handsome, nor funny.”
+{'neg': <strong>0.646</strong>, 'neu': 0.354, 'pos': 0.0, 'compound': -0.7424}</p>
+<p>“Make sure you :) or :D today!”
+{'neg': 0.0, 'neu': 0.294, 'pos': <strong>0.706</strong>, 'compound': 0.8633}</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="5.3-Final-Accuracy-Results">5.3 Final Accuracy Results<a class="anchor-link" href="#5.3-Final-Accuracy-Results">&#182;</a></h1><hr>
+<p><img src="Untitled.gif" style="align:bottom;left:30;height:400px"></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="6.-Conclusion">6. Conclusion<a class="anchor-link" href="#6.-Conclusion">&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="6.1-Confusion-Matrix">6.1 Confusion Matrix<a class="anchor-link" href="#6.1-Confusion-Matrix">&#182;</a></h1><hr>
+<p><img src="confusion_1.png" style="float: left; height: 300px">
+<img src="confusion_2.png" style="float: left; height: 300px"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="6.2-Train-Test">6.2 Train Test<a class="anchor-link" href="#6.2-Train-Test">&#182;</a></h1><hr>
+<p><img src="accu_1.png" style="float: left; height: 80px">   <br><br>
+of accuracy in predicting the rating of a business in the Yelp in the <strong>train</strong> dataset.</p>
+<p><br><br></p>
+<p><img src="accu_2.png" style="float: left; height: 80px"> <br><br>
+of accuracy in predicting the rating of a business in the Yelp in the <strong>test</strong> dataset.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="6.3-Conclusion">6.3 Conclusion<a class="anchor-link" href="#6.3-Conclusion">&#182;</a></h1><hr>
+<ul>
+<li>Improved our model from 0.67 to 0.82 by adding NLP into our model. This has a strong influence in our model. </li>
+<li>We can see that by using GridSearch and Lasso slightly improve our model, but all of them are around 80% accuracy with NLP</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Thank-You!">Thank You!<a class="anchor-link" href="#Thank-You!">&#182;</a></h1><p><img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Yelp_Logo.svg" style="height: 200px"></p>
+<p><br><br></p>
+<p>Lucien REY <br>
+<a href="https://github.com/lucienrey/GA-Yelp">https://github.com/lucienrey/GA-Yelp</a></p>
+
+</div>
+</div>
 </div>
 </div>
 </div>
