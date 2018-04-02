@@ -11915,12 +11915,22 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="yelp_mainpage.png" style="align:bottom;left:30;height:500px"></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Table-of-Content">Table of Content<a class="anchor-link" href="#Table-of-Content">&#182;</a></h1><hr>
 <ol>
 <li>Project Idea</li>
 <li>Dataset</li>
 <li>EDA</li>
-<li>Model Results</li>
+<li>Initial Results</li>
+<li>NLP</li>
 <li>Conclusion</li>
 </ol>
 
@@ -11991,14 +12001,14 @@ a.anchor-link {
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">yelp_business</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">yelp_business_attributes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">yelp_tip</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">yelp_business_hours</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">yelp_review</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The shape of yelp_business.csv:&quot;</span><span class="p">,</span> <span class="n">yelp_business</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The shape of yelp_business_attributes.csv:&quot;</span><span class="p">,</span> <span class="n">yelp_business_attributes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The shape of yelp_tip.csv:&quot;</span><span class="p">,</span> <span class="n">yelp_tip</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The shape of yelp_business_hours.csv:&quot;</span><span class="p">,</span> <span class="n">yelp_business_hours</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The shape of yelp_review.csv:&quot;</span><span class="p">,</span> <span class="n">yelp_review</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12015,11 +12025,11 @@ a.anchor-link {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>(174567, 13)
-(152041, 82)
-(1098324, 5)
-(174567, 8)
-(5261668, 9)
+<pre>The shape of yelp_business.csv: (174567, 13)
+The shape of yelp_business_attributes.csv: (152041, 82)
+The shape of yelp_tip.csv: (1098324, 5)
+The shape of yelp_business_hours.csv: (174567, 8)
+The shape of yelp_review.csv: (5261668, 9)
 </pre>
 </div>
 </div>
@@ -12035,7 +12045,7 @@ a.anchor-link {
 <h1 id="2.2-Data-Cleanup">2.2 Data Cleanup<a class="anchor-link" href="#2.2-Data-Cleanup">&#182;</a></h1><hr>
 <ul>
 <li>Select only business that is open</li>
-<li>Added the attributes (92 columns) and reduce to NA threshold of 5000</li>
+<li>Added the attributes (82 columns) and reduce to NA threshold of 5000</li>
 <li>Group the different categories (54600) with threshold 1000 and added back to the dataset</li>
 <li>Added number of tips for each business</li>
 <li>Added dummy if the business is open on weekend or not</li>
@@ -12134,12 +12144,12 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="5.2-Examples">5.2 Examples<a class="anchor-link" href="#5.2-Examples">&#182;</a></h1><hr>
-<p>“VADER is VERY SMART, handsome, and FUNNY.”
-{'neg': 0.0, 'neu': 0.246, 'pos': <strong>0.754</strong>, 'compound': 0.9227}</p>
-<p>“VADER is not smart, handsome, nor funny.”
-{'neg': <strong>0.646</strong>, 'neu': 0.354, 'pos': 0.0, 'compound': -0.7424}</p>
-<p>“Make sure you :) or :D today!”
-{'neg': 0.0, 'neu': 0.294, 'pos': <strong>0.706</strong>, 'compound': 0.8633}</p>
+<p>“VADER is VERY SMART, handsome, and FUNNY.”<br>
+-&gt; {'neg': 0.0, 'neu': 0.246, 'pos': <strong>0.754</strong>, 'compound': 0.9227}</p>
+<p>“VADER is not smart, handsome, nor funny.”<br>
+-&gt; {'neg': <strong>0.646</strong>, 'neu': 0.354, 'pos': 0.0, 'compound': -0.7424}</p>
+<p>“Make sure you :) or :D today!”<br>
+-&gt; {'neg': 0.0, 'neu': 0.294, 'pos': <strong>0.706</strong>, 'compound': 0.8633}</p>
 
 </div>
 </div>
@@ -12191,7 +12201,58 @@ of accuracy in predicting the rating of a business in the Yelp in the <strong>te
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="6.3-Conclusion">6.3 Conclusion<a class="anchor-link" href="#6.3-Conclusion">&#182;</a></h1><hr>
+<h1 id="6.3-Importance-Score">6.3 Importance Score<a class="anchor-link" href="#6.3-Importance-Score">&#182;</a></h1><hr>
+<p>Below are the features that are the most important for our model:</p>
+<table>
+<thead><tr>
+<th style="text-align:center"><strong>Features</strong></th>
+<th style="text-align:center"><strong>Importance Score</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">pos_review</td>
+<td style="text-align:center">0.298164</td>
+</tr>
+<tr>
+<td style="text-align:center">comp_review</td>
+<td style="text-align:center">0.228329</td>
+</tr>
+<tr>
+<td style="text-align:center">neg_review</td>
+<td style="text-align:center">0.146903</td>
+</tr>
+<tr>
+<td style="text-align:center">neu_review</td>
+<td style="text-align:center">0.090697</td>
+</tr>
+<tr>
+<td style="text-align:center">comp_tip</td>
+<td style="text-align:center">0.019001</td>
+</tr>
+<tr>
+<td style="text-align:center">longitude</td>
+<td style="text-align:center">0.016482</td>
+</tr>
+<tr>
+<td style="text-align:center">latitude</td>
+<td style="text-align:center">0.016118</td>
+</tr>
+<tr>
+<td style="text-align:center">categoriesrestaurants</td>
+<td style="text-align:center">0.015643</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="6.4-Conclusion">6.4 Conclusion<a class="anchor-link" href="#6.4-Conclusion">&#182;</a></h1><hr>
 <ul>
 <li>Improved our model from 0.67 to 0.82 by adding NLP into our model. This has a strong influence in our model. </li>
 <li>We can see that by using GridSearch and Lasso slightly improve our model, but all of them are around 80% accuracy with NLP</li>
@@ -12211,7 +12272,7 @@ of accuracy in predicting the rating of a business in the Yelp in the <strong>te
 
 </div>
 </div>
-</div>
+</div></section></section>
 </div>
 </div>
 
